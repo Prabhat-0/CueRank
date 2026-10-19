@@ -1,26 +1,27 @@
 @import "tailwindcss";
-
+/* 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
+} */
 
+/* custom variable for font i.e. inter and barlow */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --font-barlow:var(--font-barlowCondensed);
 }
-
+/* custom variable for buttoms bg which is in navbar and card not the dropdown buttons  */
+@utility bg-buttons{
+  background: linear-gradient(90deg, #55E489 0%, #00A03B 100%);
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
-
+/* 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+} */
