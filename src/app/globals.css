@@ -8,7 +8,12 @@
 /* custom variable for font i.e. inter and barlow */
 @theme inline {
   --font-inter: var(--font-inter);
-  --font-barlow:var(--font-barlowCondensed);
+  --font-barlow:var(--font-barlow-condensed);
+  --color-inactive:#A9B8B0;
+  --color-gold:#FAC738;
+  --color-black:#11291E;
+
+
 }
 /* custom variable for buttoms bg which is in navbar and card not the dropdown buttons  */
 @utility bg-buttons{

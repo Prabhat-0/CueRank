@@ -1,5 +1,6 @@
 import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
+import NavBar from "@/components/NavBar";
 
 
 const inter=Inter({
@@ -24,7 +25,12 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${inter.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col ">{children}</body>
+      <body className="min-h-full flex flex-col ">
+        <NavBar/>
+        <main>
+          {children}
+        </main>
+        </body>
     </html>
   );
 }
