@@ -9,10 +9,11 @@ import { Person } from "@/svg";
 
 const navItems = [
   { item: "Home", path: "/" },
-  { item: "Tournaments", path: "#" },
+  { item: "About", path: "#" },
+  { item: "How it works", path: "#" },
+  { item: "Tournament", path: "#" },
   { item: "Rankings", path: "#" },
-  { item: "Clubs", path: "#" },
-  { item: "Players", path: "#" },
+  { item: "Our partners", path: "#" },
 ];
 
 const profileMenu = [
@@ -69,7 +70,7 @@ const NavBar = () => {
   return (
     <header className="fixed inset-x-0 top-3 z-50 px-3 sm:top-6 sm:px-4 xl:top-10">
       <div className="relative mx-auto w-full max-w-[1200px]">
-        <nav className="flex h-[clamp(56px,4.5vw,77px)] w-full items-center justify-between gap-2 rounded-full border border-[#1B2824B2] bg-[#10171566] py-2 pl-4 pr-2 backdrop-blur-2xl sm:gap-3 sm:pl-6 lg:gap-6 lg:pl-10">
+        <nav className="flex h-[clamp(56px,4.5vw,77px)] w-full items-center justify-between gap-2 rounded-full border border-[#1B2824B2] bg-[#10171566] py-2 pl-4 pr-2 backdrop-blur-sm sm:gap-3 sm:pl-6 lg:gap-6 lg:pl-10">
           {/* Logo */}
           <Link
             href="/"
@@ -101,7 +102,7 @@ const NavBar = () => {
 
           {/* Right side */}
           <div className="flex items-center gap-1.5 text-inactive sm:gap-3 xl:gap-4">
-            {/* Language toggle: always visible */}
+            {/* Language toggle: always visible
             <div
               role="group"
               aria-label="Language"
@@ -124,14 +125,14 @@ const NavBar = () => {
                   </button>
                 </span>
               ))}
-            </div>
+            </div> */}
 
             {/* Log in / Register: sm and up (inside mobile panel below sm) */}
-            <div className="hidden items-center gap-2 sm:flex xl:gap-4">
+            <div className="hidden h-auto max-h-[45px] items-center gap-2 sm:flex xl:gap-4">
               <Button
                 href="/login"
                 text="Log in"
-                padding="px-4 py-2.5 xl:px-5"
+                padding="px-7.5 py-3 xl:px-5"
                 textStyle="font-inter text-white font-semibold text-sm"
                 border="border-none"
                 bg="bg-white/5"
@@ -139,7 +140,7 @@ const NavBar = () => {
               <Button
                 href="/register"
                 text="Register"
-                padding="px-4 py-2.5 xl:px-5"
+                padding="px-7.5 py-3 xl:px-5"
                 textStyle="font-inter text-black font-semibold text-sm"
                 border="border border-[#55E489]"
                 bg="bg-buttons"
@@ -147,7 +148,8 @@ const NavBar = () => {
             </div>
 
             {/* Profile dropdown */}
-            <div ref={profileRef} className="relative">
+            {/**relative */}
+            <div ref={profileRef} className="hidden">
               <button
                 type="button"
                 aria-label="Open profile menu"

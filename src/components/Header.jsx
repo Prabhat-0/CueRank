@@ -5,9 +5,10 @@ const Header = ({
   spanText2 = "top 3",
   para = "this is test para",
   icon,
+  maxWidth='xl:w-[519px] '
 }) => {
   return (
-    <div className="flex flex-col items-start gap-2 w-auto xl:w-[519px] h-auto max-h-[58px]">
+    <div className={`flex flex-col items-start gap-2 w-auto ${maxWidth}  h-auto max-h-[58px]`}>
       <div className="flex items-center gap-4.5">
         {icon && (
           <span className="grid size-7.5 shrink-0 place-items-center">
