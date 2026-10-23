@@ -1,6 +1,7 @@
 import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 
 const inter=Inter({
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
         <main>
           {children}
         </main>
+        <Footer/>
         </body>
     </html>
   );
