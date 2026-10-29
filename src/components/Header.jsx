@@ -15,7 +15,7 @@ const Header = ({
             {icon}
           </span>
         )}
-        <h2 className="font-barlow text-2xl sm:text-3xl md:text-4xl font-bold tracking-[2px] whitespace-nowrap [text-box:trim-both_cap_alphabetic]">
+        <h2 className="font-barlow text-2xl sm:text-3xl md:text-4xl font-bold tracking-[1px] sm:tracking-[2px] whitespace-nowrap [text-box:trim-both_cap_alphabetic]">
           <span className="text-[#F4F6F1]">{spanText1.toUpperCase()}</span>
           <span className="text-gold">{spanText2.toUpperCase()}</span>
         </h2>

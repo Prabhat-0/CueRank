@@ -122,5 +122,11 @@ const DownArrow = (props) => {
         </svg>
     );
 };
+const Tick=()=>{
+    return(<svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 4.8L7.12346 11L17 1" stroke-width="2" stroke-linecap="round" stroke="#55E489"/>
+</svg>
+)
+}
 
-export { Crown, Star, Person, Target, Trophy, Streak, Win, WhatsApp, Search, DownArrow };
+export { Crown, Star, Person, Target, Trophy, Streak, Win, WhatsApp, Search, DownArrow,Tick };

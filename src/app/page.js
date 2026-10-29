@@ -25,6 +25,7 @@ import JoinTournamentImg from '../../public/JoinTournamentImg.png'
 import PayAndCofirmImg from "../../public/PayAndConfirmImg.png";
 import PlayTrackImg from "../../public/PlayTrackImg.png";
 import SnookerImg from '../../public/snooker.png'
+
 /* ------------------------------------------------------------------ */
 /* Data                                                                */
 /* ------------------------------------------------------------------ */
@@ -45,12 +46,14 @@ const stats = [
     { value: "₹20,000", label: "Prize Pool Distributed" },
 ];
 
-const balls = [{ colors: "bg-[#DDAA1B]", scores: "3" },
-{ colors: "bg-green", scores: "5" },
-{ colors: "bg-[#C56030]", scores: "3" },
-{ colors: "bg-[#3258E2]", scores: "7" },
-{ colors: "bg-[#E23258]", scores: "9" },
-{ colors: "bg-[#000000]", scores: "2" }];
+const balls = [{ colors: "bg-[#FDD426]", scores: "2" },
+{ colors: "bg-[#028748]", scores: "3" },
+{ colors: "bg-[#905118]", scores: "4" },
+{ colors: "bg-[#005CC4]", scores: "5" },
+{ colors: "bg-[#F24793]", scores: "6" },
+{ colors: "bg-[#000000]", scores: "7" },
+// { colors: "bg-red-700", scores: "1" }
+];
 
 const leaderboard = [
     { rank: 4, name: "Mark Wilson", country: "GBR", club: "The Playhouse Club, Delhi", tournament: "Delhi Open 2025", date: "14 Jun 2025", highestBreak: 124 },
@@ -105,8 +108,8 @@ const tournaments = [
         image: SportImg,
         title: "Chennai Championship",
         meta: "Chennai · Royal Cue · Oct 24, 2026",
-        entryFee: "$20",
-        prize: "$800",
+        entryFee: "₹20",
+        prize: "₹800",
         spots: "24/32",
         lastEntry: "3d 12h 50m",
     },
@@ -115,8 +118,8 @@ const tournaments = [
         image: SportImg,
         title: "Mumbai Open",
         meta: "Mumbai · Cue Masters · Nov 02, 2026",
-        entryFee: "$30",
-        prize: "$1,200",
+        entryFee: "₹30",
+        prize: "₹1,200",
         spots: "10/32",
         lastEntry: "6d 4h 20m",
     },
@@ -125,8 +128,8 @@ const tournaments = [
         image: SportImg,
         title: "Delhi Grand Slam",
         meta: "Delhi · Black Ball Club · Nov 15, 2026",
-        entryFee: "$25",
-        prize: "$1,000",
+        entryFee: "₹25",
+        prize: "₹1,000",
         spots: "2/16",
         lastEntry: "1d 8h 05m",
     },
@@ -137,21 +140,21 @@ const podium = [
         card: "border-[#A47E14] bg-[linear-gradient(180deg,#2A1F00_0%,#1A2A1A_50%,#0D1A10_100%)]",
         badge: "bg-[#FAC738] text-[#0D1A10]",
         avatar: "border-gold",
-        info: "gap-1 md:gap-5",
+        info: "gap-1 md:gap-3.75",
     },
     {
         rank: 2,
         card: "h-fit border-[#8A9DA8] bg-[linear-gradient(180deg,#1A1F22_0%,#101618_100%)]",
         badge: "bg-[#8A9DA8] text-[#0D1A10]",
         avatar: "border-[#8A9DA8]",
-        info: "gap-0.5 md:gap-2",
+        info: "gap-0.5 md:gap-3.75",
     },
     {
         rank: 3,
         card: "h-fit border-[#A0522D] bg-[linear-gradient(180deg,#221508_0%,#1A1510_100%)]",
         badge: "bg-[#A0522D] text-white",
         avatar: "border-[#A0522D]",
-        info: "gap-0.5 md:gap-2",
+        info: "gap-0.5 md:gap-3.75",
     },
 ];
 const steps = [
@@ -169,7 +172,7 @@ const FAQs = [{ quesions: "What is CueRank?", replies: "CueRank is a platform fo
 { quesions: "How can I view live scores and match results?", replies: "CueRank is a platform for discovering snooker tournaments, following live matches, tracking player rankings, and connecting with clubs and players." },
 
 ];
-const spotlightTableContent = [{ text: "Tables", number: 12 }, { text: "Active Tournaments", number: 3 }, { text: "Tournaments Hosted", number: 142 }, { text: "Prize Distributed", number: "$45000" }, { text: "Total Players", number: 1240 }]
+const spotlightTableContent = [{ text: "Tables", number: 12 }, { text: "Active Tournaments", number: 3 }, { text: "Tournaments Hosted", number: 142 }, { text: "Prize Distributed", number: "₹45000" }, { text: "Total Players", number: 1240 }]
 const GENDERS = ["male", "female"];
 const AGES = ["Overall", "Under 16", "Under 21", "Open", "40+"];
 
@@ -182,14 +185,20 @@ export default function Home() {
     const [faqs, setFaqs] = useState(0);
 
     return (
-        <div className="h-auto w-full">
-            {/* Page background */}
-            <Image
-                src={BG}
-                alt=""
-                priority
-                className="fixed -top-20 lg:absolute left-0 lg:top-0 -z-20 h-auto w-full"
-            />
+
+        <div
+            className="relative isolate h-auto w-full bg-[#0D1A14]"
+            style={{
+                backgroundImage: `
+            radial-gradient(ellipse 45% 12% at 0% 4%, rgba(42,58,51,0.9) 0%, transparent 100%),
+            radial-gradient(ellipse 35% 10% at 45% 31%, #0E1516 0%, transparent 100%),
+            radial-gradient(ellipse 50% 14% at 62% 62%, #0F3D2B 0%, transparent 100%),
+            radial-gradient(ellipse 45% 12% at 80% 90%, rgba(28,58,46,0.95) 0%, transparent 100%),
+            linear-gradient(180deg, #0C2A1D 0%, #0D1F18 20%, #0D1A16 35%, #0C2519 55%, #0D3023 68%, #0D1F18 85%, #0C1A14 100%)
+        `,
+            }}
+        >
+
 
             {/* WhatsApp CTA (outside every section so blur can sample the page) */}
             {whatsappHref && (
@@ -223,11 +232,11 @@ export default function Home() {
                     fill
                     priority
                     sizes="100vw"
-                    className="-z-10 w-full h-auto aspect-square"
+                    className="-z-10 w-full h-auto aspect-auto"
                 />
 
                 <div className="mx-auto flex w-full max-w-[1200px] flex-col items-start gap-4 px-5 pt-32 pb-16 sm:gap-8 sm:px-8 sm:pt-40 sm:pb-20 lg:pt-52 lg:pb-28 xl:gap-[51px] xl:px-0 xl:pt-64.5 xl:pb-35">
-                    <p className="font-inter text-sm font-medium leading-none tracking-[0.05em] text-[#DBC28B] sm:text-base xl:text-lg">
+                    <p className="font-inter text-sm font-medium leading-none tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.5em] text-[#DBC28B] sm:text-base xl:text-lg">
                         THE TABLE IS WAITING
                     </p>
 
@@ -238,7 +247,7 @@ export default function Home() {
 
                     <Paragraph
                         text={HeroPara}
-                        textSize=" text-sm md:text-base leading-[1.65] sm:text-lg xl:text-[22px] xl:whitespace-pre-line xl:[text-box:trim-both_cap_alphabetic]"
+                        textSize=" text-sm md:text-base leading-[1.65] sm:text-lg xl:text-[22px]  lg:whitespace-pre-line xl:[text-box:trim-both_cap_alphabetic] w-auto  max-w-[150px] max-w-[400px] lg:max-w-[609px]"
                     />
 
                     <div className="flex w-full flex-row gap-3 whitespace-nowrap sm:w-auto sm:gap-4">
@@ -268,20 +277,20 @@ export default function Home() {
             <section
                 id="stats"
                 aria-label="Platform stats"
-                className="flex w-full items-center justify-center px-4 py-10 xl:py-15"
+                className="flex w-full items-center justify-center px-4 pt-10 xl:pt-15"
             >
                 <div className="w-full max-w-[1200px] rounded-full bg-[#10171566] px-4 py-2 backdrop-blur-[10px] sm:px-8 md:py-7.5 xl:px-37.5">
                     <div className="grid w-full grid-cols-3">
                         {stats.map((s, i) => (
                             <div
                                 key={s.label}
-                                className={`flex flex-col items-center justify-center gap-2 text-center sm:gap-5 ${i > 0 ? "border-l border-inactive" : ""
+                                className={`flex flex-col items-center justify-center gap-0 text-center sm:gap-5 ${i > 0 ? "border-l border-inactive/10" : ""
                                     }`}
                             >
-                                <p className="font-barlow text-xl font-semibold text-active sm:text-2xl xl:text-3xl">
+                                <p className="font-barlow text-lg font-semibold text-active sm:text-xl md:text-2xl xl:text-3xl">
                                     {s.value}
                                 </p>
-                                <p className="font-inter text-[10px] font-medium text-inactive sm:text-xs xl:text-sm">
+                                <p className="px-4 font-inter text-[10px] font-medium text-inactive sm:text-xs xl:text-sm">
                                     {s.label}
                                 </p>
                             </div>
@@ -352,44 +361,98 @@ export default function Home() {
                     {/* Cards */}
                     <div
                         id="winnerCorousel"
-                        className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+                        className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5"
                     >
                         {WinnerCardDetails.map((card, index) => (
                             <div
                                 key={card.name}
                                 className="overflow-hidden rounded-xl border"
                                 style={{ borderColor: card.primaryColor, background: card.corouselBg }}
-
                             >
                                 {/* Card heading */}
                                 <div
-                                    className="flex items-center gap-3.5 whitespace-nowrap px-5 py-2.5"
+                                    className="flex items-center gap-2.5 whitespace-nowrap px-3 py-1.5 sm:gap-3.5 sm:px-5 sm:py-2.5"
                                     style={{ background: card.headingBg }}
                                 >
                                     <div
-                                        className="flex size-8 items-center justify-center rounded-md font-barlow text-lg font-bold text-black bg-[#c9a84c3f]"
+                                        className="flex size-6 items-center justify-center rounded-md font-barlow text-sm font-bold text-black sm:size-8 sm:text-lg"
                                         style={{ backgroundColor: card.primaryColor }}
                                     >
                                         {index + 1}
                                     </div>
-                                    <div className="flex size-5 items-center justify-center">
+                                    <div className="flex size-4 items-center justify-center sm:size-5">
                                         <Crown stroke={card.primaryColor} />
                                     </div>
                                     <h2
-                                        className="whitespace-nowrap font-inter text-[11px] font-semibold tracking-[1.5px]"
+                                        className="whitespace-nowrap font-inter text-[10px] font-semibold tracking-[1.5px] sm:text-[11px]"
                                         style={{ color: card.primaryColor }}
                                     >
                                         {card.header.toUpperCase()}
                                     </h2>
                                 </div>
 
-                                {/* Player */}
-                                <div
-                                    className="flex flex-col items-center justify-center gap-2 p-5 sm:gap-3 md:gap-5"
+                                {/* ================= MOBILE ONLY (hidden from sm and up) ================= */}
+                                <div className="sm:hidden">
+                                    {/* Player: avatar left, name + button right */}
+                                    <div className="flex flex-row items-center gap-3 px-3 py-3">
+                                        <div
+                                            className="size-12 shrink-0 overflow-hidden rounded-full border"
+                                            style={{ borderColor: card.primaryColor }}
+                                        >
+                                            <Image
+                                                src={card.image}
+                                                alt={card.name}
+                                                width={100}
+                                                height={100}
+                                                className="size-full object-cover"
+                                            />
+                                        </div>
 
-                                >
+                                        <div className="flex min-w-0 flex-1 flex-row items-center justify-between gap-2">
+                                            <h4 className="truncate font-inter text-base font-bold text-active">
+                                                {card.name}
+                                            </h4>
+
+                                            <button
+                                                type="button"
+                                                className="flex w-fit shrink-0 items-center gap-1 rounded-full border px-3 py-1 text-xs"
+                                                style={{
+                                                    backgroundColor: card.buttonBg,
+                                                    borderColor: card.primaryColor,
+                                                    color: card.primaryColor,
+                                                }}
+                                            >
+                                                <Star stroke={card.primaryColor} /> Open 16
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Win % and Streak right under the player on mobile */}
+                                    <div className="grid grid-cols-2 border-t border-inactive py-2.5">
+                                        <div className="flex flex-col items-center justify-center">
+                                            <span className="flex items-center justify-center gap-1 whitespace-nowrap font-inter text-[10px] text-inactive">
+                                                <Win /> Win %
+                                            </span>
+                                            <p className="font-barlow text-lg font-bold leading-tight text-[#4ADE80]">
+                                                {card.stats.winRate}
+                                            </p>
+                                        </div>
+
+                                        <div className="flex flex-col items-center justify-center border-l border-inactive">
+                                            <span className="flex items-center justify-center gap-1 whitespace-nowrap font-inter text-[10px] text-inactive">
+                                                <Streak /> Win Streak
+                                            </span>
+                                            <p className="font-barlow text-lg font-bold leading-tight text-[#F97316]">
+                                                {card.stats.streak}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* ================= TABLET / DESKTOP ONLY (hidden on mobile) ================= */}
+                                <div className="hidden flex-col items-center justify-center gap-3 p-4 sm:flex md:gap-4">
                                     <div
-                                        className="size-18 overflow-hidden rounded-full border sm:size-22 md:size-25"
+                                        className="size-16 overflow-hidden rounded-full border md:size-20"
                                         style={{ borderColor: card.primaryColor }}
                                     >
                                         <Image
@@ -401,13 +464,13 @@ export default function Home() {
                                         />
                                     </div>
 
-                                    <h4 className="font-inter text-lg font-bold text-active md:text-2xl">
+                                    <h4 className="font-inter text-lg font-bold text-active md:text-xl">
                                         {card.name}
                                     </h4>
 
                                     <button
                                         type="button"
-                                        className="flex w-fit items-center gap-1.5 rounded-full border px-4.5 py-1.5"
+                                        className="flex w-fit items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm"
                                         style={{
                                             backgroundColor: card.buttonBg,
                                             borderColor: card.primaryColor,
@@ -418,43 +481,43 @@ export default function Home() {
                                     </button>
                                 </div>
 
-                                {/* Stats row 1 */}
-                                <div className="grid grid-cols-3 border-t border-inactive py-5">
+                                {/* Stats row 1 (shared by mobile and desktop) */}
+                                <div className="grid grid-cols-3 border-t border-inactive py-2.5 sm:py-4">
                                     <div className="flex flex-col items-center justify-center">
-                                        <span className="flex items-center justify-center gap-1.5 whitespace-nowrap font-inter text-[11px] text-inactive">
+                                        <span className="flex items-center justify-center gap-1 whitespace-nowrap font-inter text-[10px] text-inactive sm:gap-1.5 sm:text-[11px]">
                                             <Person /> Clubs played
                                         </span>
-                                        <p className="font-barlow text-[26px] font-bold text-active">
+                                        <p className="font-barlow text-lg font-bold leading-tight text-active sm:text-2xl">
                                             {card.stats.clubs}
                                         </p>
                                     </div>
 
                                     <div className="flex flex-col items-center justify-center border-l border-inactive">
-                                        <span className="flex items-center justify-center gap-1.5 whitespace-nowrap font-inter text-[11px] text-inactive">
+                                        <span className="flex items-center justify-center gap-1 whitespace-nowrap font-inter text-[10px] text-inactive sm:gap-1.5 sm:text-[11px]">
                                             <Trophy /> Tournaments
                                         </span>
-                                        <p className="font-barlow text-[26px] font-bold text-active">
+                                        <p className="font-barlow text-lg font-bold leading-tight text-active sm:text-2xl">
                                             {card.stats.tournaments}
                                         </p>
                                     </div>
 
                                     <div className="flex flex-col items-center justify-center border-l border-inactive">
-                                        <span className="flex items-center justify-center gap-1.5 whitespace-nowrap font-inter text-[11px] text-inactive">
+                                        <span className="flex items-center justify-center gap-1 whitespace-nowrap font-inter text-[10px] text-inactive sm:gap-1.5 sm:text-[11px]">
                                             <Target /> Targets
                                         </span>
-                                        <p className="font-barlow text-[26px] font-bold text-active">
+                                        <p className="font-barlow text-lg font-bold leading-tight text-active sm:text-2xl">
                                             {card.stats.targets}
                                         </p>
                                     </div>
                                 </div>
 
-                                {/* Stats row 2 */}
-                                <div className="grid grid-cols-2 border-t border-inactive py-5">
+                                {/* Stats row 2: DESKTOP ONLY (on mobile this is already shown under the player) */}
+                                <div className="hidden grid-cols-2 border-t border-inactive py-4 sm:grid">
                                     <div className="flex flex-col items-center justify-center">
                                         <span className="flex items-center justify-center gap-1.5 whitespace-nowrap font-inter text-[11px] text-inactive">
                                             <Win /> Win %
                                         </span>
-                                        <p className="font-barlow text-[26px] font-bold text-[#4ADE80]">
+                                        <p className="font-barlow text-2xl font-bold leading-tight text-[#4ADE80]">
                                             {card.stats.winRate}
                                         </p>
                                     </div>
@@ -463,7 +526,7 @@ export default function Home() {
                                         <span className="flex items-center justify-center gap-1.5 whitespace-nowrap font-inter text-[11px] text-inactive">
                                             <Streak /> Win Streak
                                         </span>
-                                        <p className="font-barlow text-[26px] font-bold text-[#F97316]">
+                                        <p className="font-barlow text-2xl font-bold leading-tight text-[#F97316]">
                                             {card.stats.streak}
                                         </p>
                                     </div>
@@ -513,20 +576,20 @@ export default function Home() {
                     </label>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
                     {tournaments.map((t) => (
                         <div
                             key={t.id}
-                            className="flex flex-col rounded-2xl overflow-hidden border border-[#31443A]"
+                            className="flex group/card flex-col rounded-2xl overflow-hidden border border-[#31443A] "
                         >
                             <Image
                                 src={t.image}
                                 alt={t.title}
-                                className="w-full h-48 object-cover"
+                                className="w-full h-48 object-cover transition-transform duration-300 group-hover/card:scale-105"
                             />
 
-                            <div className="flex flex-col gap-5 p-5">
-                                <div className="flex flex-col gap-3.75">
+                            <div className="flex flex-col gap-2 sm:gap-3 md:gap-5 p-5">
+                                <div className="flex flex-col gap-0 sm:gap-3 md:gap-3.75">
                                     <h2 className="text-white font-inter font-bold text-xl">{t.title}</h2>
                                     <p className="font-inter text-sm text-inactive">{t.meta}</p>
                                 </div>
@@ -583,14 +646,14 @@ export default function Home() {
                         spanText2="spotlight"
                         para="Featured clubs. Find your next place to play."
                     />
-                    <Button
+                    {/* <Button
                         href="#"
                         text="View All Clubs"
                         textStyle="font-inter font-medium text-md text-white"
                         bg="bg-white/5"
                         border="border-none"
                         padding="px-10 py-3.5"
-                    />
+                    /> */}
                 </div>
 
                 {/* Grid: fills the container and adapts at every width */}
@@ -607,7 +670,7 @@ export default function Home() {
                                 className="h-40 w-full object-cover sm:h-48"
                             />
 
-                            <div className="flex flex-col gap-4 p-4 sm:gap-5 sm:p-5">
+                            <div className="flex flex-col gap-2 p-4 sm:gap-5 sm:p-5">
                                 {/* Heading with logo */}
                                 <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4 sm:pb-5">
                                     <div className="flex min-w-0 items-center gap-3">
@@ -633,7 +696,7 @@ export default function Home() {
                                 </div>
 
                                 {/* Stats */}
-                                <div className="flex flex-col gap-3.75">
+                                <div className="flex flex-col gap-1 sm:gap-2 md:gap-3.75">
                                     {spotlightTableContent.map((row, index) => (
                                         <div
                                             key={row.text}
@@ -653,7 +716,7 @@ export default function Home() {
                                 </div>
 
                                 <Button
-                                    text="Join Now"
+                                    text="Visit Clubs"
                                     bg="bg-buttons w-full h-auto"
                                     padding="py-5.5"
                                     border="border border-[#55E489]"
@@ -694,20 +757,20 @@ export default function Home() {
                             key={item}
                             className="flex min-w-0 flex-col overflow-hidden rounded-2xl bg-[#19231F]"
                         >
-                            <div className="flex flex-col gap-4 p-4 sm:gap-5 sm:p-5">
+                            <div className="flex flex-col gap-2 p-4 sm:gap-5 sm:p-5">
                                 {/* Title */}
-                                <div className="flex flex-col gap-3 sm:gap-5">
-                                    <h2 className="font-inter text-lg font-bold text-white sm:text-xl">
+                                <div className="flex flex-col gap-1 sm:gap-5">
+                                    <h2 className="font-inter text-base font-bold text-white sm:text-xl">
                                         Chennai Championship
                                     </h2>
-                                    <p className="font-inter text-sm text-inactive">
+                                    <p className="font-inter text-xs sm:text-sm text-inactive">
                                         Royal Cue, Chennai · Oct 10, 2026
                                     </p>
                                 </div>
 
                                 {/* Winner */}
-                                <div className="flex flex-wrap items-center gap-3 border-t border-white/10 pt-4 sm:pt-5">
-                                    <div className="relative size-15 shrink-0 overflow-hidden rounded-full">
+                                <div className="flex flex-wrap items-center gap-3 border-t border-white/10 pt-2 sm:pt-5">
+                                    <div className="relative size-12 sm:size-15 shrink-0 overflow-hidden rounded-full">
                                         <Image
                                             src={WinnerPhoto}
                                             alt="Winner Rajesh Kumar"
@@ -715,8 +778,8 @@ export default function Home() {
                                         />
                                     </div>
 
-                                    <div className="flex min-w-35 flex-1 flex-col gap-2">
-                                        <div className="grid w-fit place-items-center rounded-sm bg-[#4ADE801A] px-2 py-1.5 font-inter text-[10px] font-bold text-green">
+                                    <div className="flex min-w-35 flex-1 flex-col gap-1 sm:gap-2">
+                                        <div className="grid w-fit place-items-center rounded-sm bg-[#4ADE801A] px-2 py-1 sm:py-1.5 font-inter text-[10px] font-bold text-green">
                                             WINNER
                                         </div>
                                         <span className="truncate font-inter text-lg font-bold text-white sm:text-xl">
@@ -724,9 +787,9 @@ export default function Home() {
                                         </span>
                                     </div>
 
-                                    <div className="flex shrink-0 flex-col items-end gap-2 rounded-md bg-white/5 p-2.5 sm:gap-3">
-                                        <span className="font-inter text-xs text-inactive">Total Prize</span>
-                                        <span className="font-inter text-lg font-bold text-gold">₹20k</span>
+                                    <div className="flex shrink-0 flex-col items-end gap-0 sm:gap-2 rounded-md bg-white/5 p-2.5 sm:gap-3">
+                                        <span className="font-inter text-[10px] sm:text-xs text-inactive">Total Prize</span>
+                                        <span className="font-inter text-base sm:text-lg font-bold text-gold">₹20k</span>
                                     </div>
                                 </div>
 
@@ -740,25 +803,28 @@ export default function Home() {
                                         />
                                     </div>
 
-                                    <div className="flex min-w-30 flex-1 flex-col gap-2">
-                                        <span className="font-inter text-[10px] font-bold text-inactive">
-                                            RUNNER UP
-                                        </span>
+                                    <div className="flex min-w-30 flex-1 flex-col gap-1 sm:gap-2">
+                                        <div className="grid w-fit place-items-center rounded-sm bg-[#d7cb9a1a] px-2 py-1 sm:py-1.5 font-inter text-[10px] font-bold text-inactive">
+                                            Runner Up
+                                        </div>
+                                        {/* <span className="font-inter text-[10px] font-bold text-inactive text-[#8A9DA8]">
+                                            RUNNER UP#8A9DA81A
+                                        </span> */}
                                         <span className="truncate font-inter text-base font-bold text-white">
                                             Rajesh Kumar
                                         </span>
                                     </div>
 
-                                    <div className="flex shrink-0 flex-col items-end gap-2 sm:gap-3">
+                                    <div className="flex shrink-0 flex-col items-end gap-0 sm:gap-2 rounded-md sm:gap-3">
                                         <span className="font-inter text-xs text-inactive">Total Prize</span>
-                                        <span className="font-inter text-lg font-bold text-white">₹10k</span>
+                                        <span className="font-inter text-md sm:text-lg font-bold text-white">₹10k</span>
                                     </div>
                                 </div>
                             </div>
 
                             <a
                                 href="#"
-                                className="flex items-center justify-end bg-white/5 p-4 font-inter text-base font-bold text-green sm:p-5"
+                                className="flex items-center justify-end bg-white/5 p-2 font-inter text-sm sm:text-base font-bold text-green sm:p-5"
                             >
                                 View Results
                             </a>
@@ -785,7 +851,7 @@ export default function Home() {
                     {podium.map((p, index) => (
                         <div
                             key={index}
-                            className={`relative flex w-full flex-col items-start gap-3 rounded-2xl border ${p.card}`}
+                            className={`relative flex w-full flex-col items-start rounded-2xl border ${p.card}`}
                         >
                             {/* Rank badge on the top border */}
                             <div
@@ -795,7 +861,7 @@ export default function Home() {
                                 {p.rank}
                             </div>
 
-                            <div className="flex w-full items-center gap-3 p-4 pt-6 sm:p-5 sm:pt-6">
+                            <div className={`flex w-full items-center gap-5 p-3 pt-6 md:p-5 md:pt-7.5`}>
                                 <div
                                     className={`relative size-12 shrink-0 overflow-hidden rounded-full border-2 sm:size-15 ${p.avatar}`}
                                 >
@@ -837,11 +903,10 @@ export default function Home() {
                         </div>
                     ))}
                 </div>
-
                 {/**-------------- LeaderShip board--------------- */}
                 <div className="w-full overflow-hidden rounded-2xl border border-[#31443A] bg-[#19231F]">
                     {/* scrolls sideways on small screens instead of squashing the columns */}
-                    <div className="overflow-x-auto">
+                    <div className="snooker-scroll overflow-x-auto">
                         <div className="min-w-[860px] px-5 sm:px-8">
                             {/* Header */}
                             <div className="grid grid-cols-[40px_1.6fr_0.8fr_2fr_1.8fr_1.2fr_minmax(120px,1fr)] items-center gap-4 border-b
@@ -907,7 +972,7 @@ export default function Home() {
                                 />
                             </div>
 
-                            {/* Image + card: stacked on mobile, side by side and vertically centered from md up */}
+                            {/* Image + card*/}
                             <div className="flex min-w-0 flex-1 items-start gap-2 md:gap-4 py-3 sm:py-5 flex-row md:items-center md:gap-10 md:py-8">
                                 <Image
                                     src={s.image}
@@ -915,11 +980,11 @@ export default function Home() {
                                     className="size-18 hidden sm:block shrink-0 object-cover sm:size-30 md:size-40"
                                 />
 
-                                <div className="flex w-full max-w-[533px] flex-col justify-center gap-3 rounded-xl bg-[linear-gradient(90deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_100%)] p-5 backdrop-blur-md sm:p-7.5 md:w-auto md:flex-1">
-                                    <h3 className="font-barlow text-base font-semibold leading-[0.98] tracking-[-0.007em] text-active sm:text-[22px]">
+                                <div className="flex w-full max-w-[533px] flex-col justify-center gap-1 sm:gap-2 md:gap-3 rounded-xl bg-[linear-gradient(90deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0)_100%)] p-5 backdrop-blur-md sm:p-7.5 md:w-auto md:flex-1">
+                                    <h3 className="font-barlow text-md font-semibold leading-[0.98] tracking-[-0.007em] text-active sm:text-lg md:text-[22px]">
                                         {s.title}
                                     </h3>
-                                    <p className="md:overflow-visible md:text-clip md:whitespace-normal font-inter text-xs text-inactive sm:text-sm">
+                                    <p className="md:overflow-visible md:text-clip md:whitespace-normal font-inter text-[10px] text-inactive sm:text-sm">
                                         {s.desc}
                                     </p>
                                 </div>
@@ -945,16 +1010,17 @@ export default function Home() {
                         return (
                             <div
                                 key={index}
-                                className={`w-full rounded-xl border bg-[linear-gradient(90deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_100%)] p-2 px-4 sm:p-4 md:px-5 md:p-5 backdrop-blur-md transition-all duration-300 ease-in-out sm:p-7.5 ${isOpen
+                                onClick={() => setFaqs(isOpen ? null : index)}
+                                className={` cursor-pointer w-full rounded-xl border bg-[linear-gradient(90deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_100%)] p-2 px-4 sm:p-4  md:px-5 md:p-5 backdrop-blur-md transition-all duration-300 ease-in-out sm:p-7.5 ${isOpen
                                     ? "border-[#4ADE8080] shadow-[0_0_24px_rgba(74,222,128,0.12)]"
                                     : "border-[#FFFFFF1A] hover:border-[#4ADE8040] hover:bg-white/[0.02]"
                                     }`}
-                                >
+                            >
                                 {/* Question */}
                                 <button
                                     type="button"
                                     aria-expanded={isOpen}
-                                    onClick={() => setFaqs(isOpen ? null : index)}
+
                                     className="group flex w-full cursor-pointer items-center justify-between gap-4 text-left"
                                 >
                                     <span
@@ -974,7 +1040,7 @@ export default function Home() {
                                 {/* Answer: animates height from 0 to content height */}
                                 <div
                                     aria-hidden={!isOpen}
-                                    className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                                    className={`grid transition-[grid-template-rows,opacity] duration-300 cursor-text ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                                         }`}
                                 >
                                     <div className="overflow-hidden">
@@ -990,20 +1056,24 @@ export default function Home() {
             </Container>
 
             {/** -----Find your club---------- */}
+
             <Container
-                parentContainerStyle="relative isolate flex items-center min-h-[420px] sm:min-h-[576px]"
+                parentContainerStyle="relative isolate flex w-full items-center overflow-hidden"
             >
                 <Image
                     src={SnookerImg}
                     alt="Snooker Player"
-                    className="absolute inset-0 -z-10 size-full object-cover object-[70%_center] shadow-2xl shadow-black"
+                    className="absolute inset-0 -z-50 object-cover md:h-auto md:w-full shadow-black"
+                    priority
+                    sizes="100vw"
                 />
 
-                <div className="flex w-full max-w-[699px] flex-col gap-[clamp(1.25rem,3vw,2.5rem)] rounded-2xl border border-[#1B2824B2] bg-[#1017154a] p-[clamp(1.25rem,4vw,3.75rem)] backdrop-blur-md sm:rounded-[20px]">
+                <div className="relative z-10 flex w-full max-w-[699px] flex-col gap-[clamp(1.25rem,3vw,2.5rem)] rounded-2xl border border-[#1B2824B2] bg-[#1017154a] p-[clamp(1.25rem,4vw,3.75rem)] backdrop-blur-md sm:rounded-[20px]">
                     <div>
                         <h1 className="font-barlow text-[clamp(1.75rem,7vw,3.75rem)] leading-[98%] tracking-[-0.007em] text-gold">
                             Find Your Club,
                         </h1>
+
                         <h2 className="font-barlow text-[clamp(2.25rem,9.5vw,5rem)] font-semibold leading-[98%] tracking-[-0.007em] text-active">
                             Join the Action
                         </h2>
@@ -1022,6 +1092,7 @@ export default function Home() {
                     />
                 </div>
             </Container>
+
         </div>
     );
 }

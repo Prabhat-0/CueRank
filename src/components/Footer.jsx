@@ -68,10 +68,10 @@ const Footer = () => {
   return (
     <Container id="footer" parentContainerStyle="bg-[#04100B]" childContainerStyle="gap-7.5">
       {/* Top: brand, links, CTAs */}
-      <div className="grid w-full grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-[1.8fr_0.7fr_0.7fr_1fr] lg:gap-x-8">
+      <div className="grid w-full grid-cols-2 gap-x-6 gap-y-8 sm:gap-y-10 lg:grid-cols-[1.8fr_0.7fr_0.7fr_1fr] lg:gap-x-8">
         {/* Brand */}
         <div className="col-span-2 flex flex-col gap-4 lg:col-span-1">
-          <Image src={CueLogo} alt="CueRank logo" width={172} height={64} className="h-auto w-[140px] sm:w-[172px]" />
+          <Image src={CueLogo} alt="CueRank logo" width={172} height={64} className="h-auto w-[80px] sm:w-[131px] max-h-[45px]" />
           <p className="font-inter text-xs text-inactive sm:text-base">
             Connecting cue sports clubs, players and competition.
           </p>
@@ -86,46 +86,46 @@ const Footer = () => {
         </div>
 
         {/* Discover */}
-        <nav aria-label="Discover" className="flex flex-col gap-4">
+        <nav aria-label="Discover" className="flex flex-col  gap-2 md:gap-4">
           <h3 className="font-inter text-xs font-semibold uppercase tracking-[0.12em] text-gold sm:text-base">
             Discover
           </h3>
           {discover.map((l) => (
-            <Link key={l.label} href={l.href} className="font-inter text-lg font-medium leading-none text-active transition-colors hover:text-white">
+            <Link key={l.label} href={l.href} className="font-inter text-xs sm:text-lg font-medium leading-none text-active transition-colors hover:text-white">
               {l.label}
             </Link>
           ))}
         </nav>
 
         {/* The details */}
-        <nav aria-label="The details" className="flex flex-col gap-4">
+        <nav aria-label="The details" className="flex flex-col  gap-2 md:gap-4">
           <h3 className="font-inter text-xs font-semibold uppercase tracking-[0.12em] text-gold sm:text-base">
             The Details
           </h3>
           {details.map((l) => (
-            <Link key={l.label} href={l.href} className="font-inter text-lg font-medium leading-none text-active transition-colors hover:text-white">
+            <Link key={l.label} href={l.href} className="font-inter text-xs sm:text-lg font-medium leading-none text-active transition-colors hover:text-white">
               {l.label}
             </Link>
           ))}
         </nav>
 
         {/* CTAs */}
-        <div className="col-span-2 flex flex-col gap-5 sm:flex-row lg:col-span-1 lg:flex-col">
+        <div className="col-span-2 flex whitespace-nowrap flex-row gap-2 sm:gap-5 sm:flex-row lg:col-span-1 lg:flex-col">
           <Button
-            href="#"
-            text="Register your club"
-            padding="px-7.5 py-3.5 max-h-[48px]"
-            textStyle="font-inter font-medium text-lg text-black"
+            href="/clubRegister"
+            text="Club Registration"
+             padding="py-2 sm:py-3 px-7.5 md:py-3.5 h-auto max-h-[48px]"
+            textStyle="font-inter font-semibold text-sm md:text-lg text-black"
             bg="bg-buttons"
-            border="border border-[#55E489]"
+           
             width="w-full"
           />
           <Button
-            href="#"
-            text="Register as a player"
-            padding="px-7.5 py-3.5 max-h-[48px]"
-            textStyle="font-inter font-medium text-lg text-active"
-            bg="bg-white/5 backdrop-blur-md"
+            href="/register"
+            text="Player Registration"
+            padding="py-2 sm:py-3 px-7.5 md:py-3.5 h-auto max-h-[48px]"
+            textStyle="font-inter font-semibold text-sm md:text-lg text-active"
+            bg="bg-white/5 backdrop-blur-md "
             border="border-none"
             width="w-full"
           />
