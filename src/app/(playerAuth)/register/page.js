@@ -87,7 +87,7 @@ const SelectBox = ({ label, name, value, options = [], onChange, required = fals
   }, [])
 
   return (
-    <div className="flex w-full min-w-0 flex-col gap-3.5" ref={ref}>
+    <div className="flex w-full min-w-0 flex-col gap-2 sm:gap-3.5" ref={ref}>
       {label && (
         <label className="text-sm font-medium font-inter text-white/80">
           {label}
@@ -103,7 +103,7 @@ const SelectBox = ({ label, name, value, options = [], onChange, required = fals
           aria-haspopup="listbox"
           aria-expanded={open}
           aria-invalid={!!error}
-          className={`flex h-[50px] w-full items-center justify-between rounded-[10px] border bg-white/5 px-3.5 text-left text-active outline-none ${error ? 'border-red-500' : 'border-transparent focus:border-green'
+          className={`flex h-[40px] sm:h-[50px] w-full items-center justify-between rounded-[10px] border bg-white/5 px-3.5 text-left text-active outline-none ${error ? 'border-red-500' : 'border-transparent focus:border-green'
             }`}
         >
           <span>{value}</span>
@@ -238,13 +238,13 @@ const Signup = () => {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="flex w-full min-w-0 flex-col gap-5 flex-1 bg-[#10171566] border border-[#1B2824B2] p-5 sm:p-8 lg:p-10 backdrop-blur-[14px] rounded-[24px] sm:rounded-[32px] lg:rounded-[40px]"
+          className="flex w-full min-w-0 flex-col gap-2 sm:gap-5 flex-1 bg-[#10171566] border border-[#1B2824B2] p-5 sm:p-8 lg:p-10 backdrop-blur-[14px] rounded-[24px] sm:rounded-[32px] lg:rounded-[40px]"
         >
           <div className="font-barlow font-semibold text-2xl sm:text-3xl leading-[98%] tracking-tight text-active">
             Player Details
           </div>
-
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+            
+          <div className="flex flex-col gap-2 sm:gap-5 sm:flex-row sm:items-start">
             <InputBox
               label="First Name"
               name="firstName"
@@ -265,7 +265,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+          <div className="flex flex-col gap-2 sm:gap-5 sm:flex-row sm:items-start">
             <InputBox
               label="Mobile Number"
               name="mobileNO"
@@ -288,7 +288,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+          <div className="flex flex-col gap-2 sm:gap-5 sm:flex-row sm:items-start">
             <InputBox
               label="City"
               name="city"
@@ -333,7 +333,7 @@ const Signup = () => {
           />
 
           {/* ---------- Password ---------- */}
-          <div className="flex w-full min-w-0 flex-col gap-3.5">
+          <div className="flex w-full min-w-0 flex-col gap-2 md:gap-3.5">
             <label htmlFor="password" className="text-sm font-medium font-inter text-white/80">
               Password
               <span className="ml-1 text-red-500">*</span>
@@ -348,7 +348,7 @@ const Signup = () => {
                 value={form.password}
                 onChange={handleChange}
                 aria-invalid={!!errors.password}
-                className={`h-[50px] w-full rounded-[10px] border bg-white/5 px-3.5 pr-12 text-active outline-none placeholder:font-inter placeholder:text-sm placeholder:font-medium placeholder:text-inactive ${errors.password ? 'border-red-500' : 'border-transparent focus:border-green'
+                className={`h-[40px] sm:h-[50px] w-full rounded-[10px] border bg-white/5 px-3.5 pr-12 text-active outline-none placeholder:font-inter placeholder:text-sm placeholder:font-medium placeholder:text-inactive ${errors.password ? 'border-red-500' : 'border-transparent focus:border-green'
                   }`}
               />
               <button
@@ -357,7 +357,7 @@ const Signup = () => {
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white"
               >
-                {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
+                {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
               </button>
             </div>
 
@@ -367,7 +367,7 @@ const Signup = () => {
           </div>
 
           {/* ---------- Confirm Password ---------- */}
-          <div className="flex w-full min-w-0 flex-col gap-3.5">
+          <div className="flex w-full min-w-0 flex-col gap-2 sm:gap-3.5">
             <label htmlFor="confirmPassword" className="text-sm font-medium font-inter text-white/80">
               Confirm Password
               <span className="ml-1 text-red-500">*</span>
@@ -385,7 +385,7 @@ const Signup = () => {
                   clearError('confirmPassword')
                 }}
                 aria-invalid={!!errors.confirmPassword}
-                className={`h-[50px] w-full rounded-[10px] border bg-white/5 px-3.5 pr-12 text-active outline-none placeholder:font-inter placeholder:text-sm placeholder:font-medium placeholder:text-inactive ${errors.confirmPassword ? 'border-red-500' : 'border-transparent focus:border-green'
+                className={`h-[40px] sm:h-[50px] w-full rounded-[10px] border bg-white/5 px-3.5 pr-12 text-active outline-none placeholder:font-inter placeholder:text-sm placeholder:font-medium placeholder:text-inactive ${errors.confirmPassword ? 'border-red-500' : 'border-transparent focus:border-green'
                   }`}
               />
              
@@ -462,7 +462,7 @@ const Signup = () => {
               py-3 px-7.5 md:py-3.5 font-inter font-semibold text-base leading-5
               bg-buttons border backdrop-blur-md text-black
               transition-all duration-500 ease-[cubic-bezier(0.33,1,0.68,1)]
-              hover:scale-95 hover:shadow-[0_0_28px_rgba(74,222,128,0.28)] active:scale-90"
+              hover:scale-95 hover:shadow-[0_0_28px_rgba(74,222,128,0.28)] active:scale-90 h-[40px] sm:h-[50px]"
           >
             <span
               aria-hidden

@@ -269,7 +269,7 @@ const Login = () => {
                                     clearError('password')
                                 }}
                                 aria-invalid={!!errors.password}
-                                className={`h-[50px] w-full rounded-[10px] border bg-white/5 px-3.5 pr-12 text-active outline-none placeholder:font-inter placeholder:text-sm placeholder:font-medium placeholder:text-inactive ${errors.password ? 'border-red-500' : 'border-transparent focus:border-green'
+                                className={`h-[40px] sm:h-[50px] w-full rounded-[10px] border bg-white/5 px-3.5 pr-12 text-active outline-none placeholder:font-inter placeholder:text-sm placeholder:font-medium placeholder:text-inactive ${errors.password ? 'border-red-500' : 'border-transparent focus:border-green'
                                     }`}
                             />
 

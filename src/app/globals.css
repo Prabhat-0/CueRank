@@ -1,22 +1,35 @@
 @import "tailwindcss";
-/* 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-} */
 
-/* Snooker table scrollbar */
+@theme {
+  --animate-ball-bounce: ball-bounce 0.7s ease-in-out infinite;
+}
+
+@keyframes ball-bounce {
+  0%, 100% {
+    transform: translateY(0) scale(1, 1);
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  45% {
+    transform: translateY(-10px) scale(0.95, 1.05);
+  }
+  50% {
+    transform: translateY(-10px) scale(1, 1);
+    animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
+  }
+  90% {
+    transform: translateY(0) scale(1.1, 0.9);
+  }
+}
+
+/* ---------- Snooker scrollbar: kisi bhi element par lagao (horizontal + vertical) ---------- */
 .snooker-scroll {
-  overflow-x: auto;
+  overflow: auto;
   scroll-behavior: smooth;
-
-  /* Cancel any inherited or global values so Chrome uses the webkit styling */
-  scrollbar-width: auto !important;
-  scrollbar-color: auto !important;
 }
 
 .snooker-scroll::-webkit-scrollbar {
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 
 .snooker-scroll::-webkit-scrollbar-track {
@@ -29,8 +42,7 @@
 .snooker-scroll::-webkit-scrollbar-thumb {
   background:
     radial-gradient(circle at center, #dc2626 0 2.5px, transparent 3px),
-
-    radial-gradient(ellipse at 50% 25%, #ffffff 0%, #f3f3f3 55%, #c4c4c4 100%);
+    radial-gradient(circle at 30% 30%, #ffffff 0%, #f3f3f3 55%, #c4c4c4 100%);
   border: 2px solid #166534;
   border-radius: 999px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
@@ -39,17 +51,23 @@
 .snooker-scroll::-webkit-scrollbar-thumb:hover {
   background:
     radial-gradient(circle at center, #b91c1c 0 3.5px, transparent 4px),
-    radial-gradient(ellipse at 50% 25%, #ffffff 0%, #ffffff 55%, #d6d6d6 100%);
+    radial-gradient(circle at 30% 30%, #ffffff 0%, #ffffff 55%, #d6d6d6 100%);
 }
 
-/* Firefox only (this feature test is true only in Firefox) */
+.snooker-scroll::-webkit-scrollbar-corner {
+  background: #166534;
+}
+
+/* Firefox only */
 @supports (-moz-appearance: none) {
   .snooker-scroll {
-    scrollbar-width: thin !important;
-    scrollbar-color: #ffffff #166534 !important;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff #166534;
   }
 }
-  /**Stick is 2rem wide, so contact happens at left: calc(50% - 2.5rem). */
+
+/* ---------- Cue animations ---------- */
+/**Stick is 2rem wide, so contact happens at left: calc(50% - 2.5rem). */
 @keyframes cue-stick {
   0%   { left: -2.5rem;              opacity: 0; animation-timing-function: ease-out; }
   25%  { left: calc(50% - 3rem);     opacity: 1; animation-timing-function: ease-in-out; }
@@ -62,7 +80,7 @@
 @keyframes cue-ball {
   0%   { left: calc(50% - 0.5rem); opacity: 0; rotate: 0deg; }
   15%  { opacity: 1; }
-  50%  { left: calc(50% - 0.5rem); opacity: 1; rotate: 0deg;
+  50%  { left: calc(50% - 0.5rem); opacity: 1; rotate: 10deg;
          animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
   100% { left: calc(100% - 1.75rem); opacity: 1; rotate: 720deg; }
 }
@@ -74,30 +92,19 @@
   70%  { opacity: 0; }
   100% { opacity: 1; }
 }
-/* custom variable for font i.e. inter and barlow */
+
+/* ---------- Custom variables for font and colors ---------- */
 @theme inline {
   --font-inter: var(--font-inter);
-  --font-barlow:var(--font-barlow-condensed);
-  --color-inactive:#A9B8B0;
-  --color-gold:#FAC738;
-  --color-black:#11291E;
-  --color-green:#4ADE80;
-  --color-active:#F4F6F1;
-
-
+  --font-barlow: var(--font-barlow-condensed);
+  --color-inactive: #A9B8B0;
+  --color-gold: #FAC738;
+  --color-black: #11291E;
+  --color-green: #4ADE80;
+  --color-active: #F4F6F1;
 }
-/* custom variable for buttoms bg which is in navbar and card not the dropdown buttons  */
-@utility bg-buttons{
+
+/* Custom bg for buttons (navbar and cards, not the dropdown buttons) */
+@utility bg-buttons {
   background: linear-gradient(90deg, #55E489 0%, #00A03B 100%);
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-/* 
-body {
-  background: var(--background);
-  color: var(--foreground);
-} */

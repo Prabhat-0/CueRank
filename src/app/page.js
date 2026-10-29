@@ -25,7 +25,7 @@ import JoinTournamentImg from '../../public/JoinTournamentImg.png'
 import PayAndCofirmImg from "../../public/PayAndConfirmImg.png";
 import PlayTrackImg from "../../public/PlayTrackImg.png";
 import SnookerImg from '../../public/snooker.png'
-
+import img from '../../public/Intense Snooker Shot Under Spotlight.png'
 /* ------------------------------------------------------------------ */
 /* Data                                                                */
 /* ------------------------------------------------------------------ */
@@ -52,7 +52,7 @@ const balls = [{ colors: "bg-[#FDD426]", scores: "2" },
 { colors: "bg-[#005CC4]", scores: "5" },
 { colors: "bg-[#F24793]", scores: "6" },
 { colors: "bg-[#000000]", scores: "7" },
-// { colors: "bg-red-700", scores: "1" }
+    // { colors: "bg-red-700", scores: "1" }
 ];
 
 const leaderboard = [
@@ -227,12 +227,19 @@ export default function Home() {
                 className="relative isolate w-full overflow-hidden"
             >
                 <Image
+                    src={img}
+                    alt="Hero-Image"
+                    fill
+                    priority
+                    sizes="100vw"
+                    className="-z-10 object-cover sm:hidden aspect-auto"
+                /><Image
                     src={HeroImage}
                     alt="Hero-Image"
                     fill
                     priority
                     sizes="100vw"
-                    className="-z-10 w-full h-auto aspect-auto"
+                    className="-z-10 hidden sm:block object-cover md:object-fill md:w-full md:h-auto aspect-auto"
                 />
 
                 <div className="mx-auto flex w-full max-w-[1200px] flex-col items-start gap-4 px-5 pt-32 pb-16 sm:gap-8 sm:px-8 sm:pt-40 sm:pb-20 lg:pt-52 lg:pb-28 xl:gap-[51px] xl:px-0 xl:pt-64.5 xl:pb-35">
@@ -247,7 +254,7 @@ export default function Home() {
 
                     <Paragraph
                         text={HeroPara}
-                        textSize=" text-sm md:text-base leading-[1.65] sm:text-lg xl:text-[22px]  lg:whitespace-pre-line xl:[text-box:trim-both_cap_alphabetic] w-auto  max-w-[150px] max-w-[400px] lg:max-w-[609px]"
+                        textSize=" text-sm md:text-base leading-[1.4] sm:leading-[1.65] sm:text-lg xl:text-[22px]  lg:whitespace-pre-line xl:[text-box:trim-both_cap_alphabetic] w-auto  max-w-[320px] sm:max-w-[400px] lg:max-w-[609px]"
                     />
 
                     <div className="flex w-full flex-row gap-3 whitespace-nowrap sm:w-auto sm:gap-4">
@@ -263,7 +270,7 @@ export default function Home() {
                             href="#"
                             text="Register your club"
                             padding="px-6 md:px-8 xl:px-10 py-3 md:py-3.5"
-                            textStyle="font-inter font-semibold text-[12px] md:text-base text-inactive"
+                            textStyle="font-inter font-semibold text-[12px] md:text-base text-inactive hover:text-white"
                             border="border-none"
                             bg="bg-white/5"
                             blur="backdrop-blur-[10px]"
@@ -366,37 +373,51 @@ export default function Home() {
                         {WinnerCardDetails.map((card, index) => (
                             <div
                                 key={card.name}
-                                className="overflow-hidden rounded-xl border"
-                                style={{ borderColor: card.primaryColor, background: card.corouselBg }}
+                                style={{
+                                    borderColor: card.primaryColor,
+                                    background: card.corouselBg,
+                                    "--c": card.primaryColor,
+                                }}
+                                className="group/card relative isolate overflow-hidden rounded-xl border ring-1 ring-transparent
+            transition-all duration-500 ease-[cubic-bezier(0.33,1,0.68,1)]
+            hover:-translate-y-2 hover:ring-[var(--c)]
+            hover:shadow-[0_14px_28px_-16px_var(--c)]"
                             >
+                                {/* Shine: left se right nikalti hui roshni */}
+                                <span
+                                    aria-hidden
+                                    className="pointer-events-none absolute inset-y-0 -left-1/2 z-10 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/15 to-transparent
+                opacity-0 transition-none
+                group-hover/card:translate-x-[450%] group-hover/card:opacity-100 group-hover/card:transition-transform group-hover/card:duration-1000 group-hover/card:ease-out"
+                                />
+
                                 {/* Card heading */}
                                 <div
                                     className="flex items-center gap-2.5 whitespace-nowrap px-3 py-1.5 sm:gap-3.5 sm:px-5 sm:py-2.5"
                                     style={{ background: card.headingBg }}
                                 >
                                     <div
-                                        className="flex size-6 items-center justify-center rounded-md font-barlow text-sm font-bold text-black sm:size-8 sm:text-lg"
+                                        className="flex size-6 items-center justify-center rounded-md font-barlow text-sm font-bold text-black transition-transform duration-500 group-hover/card:rotate-6 group-hover/card:scale-110 sm:size-8 sm:text-lg"
                                         style={{ backgroundColor: card.primaryColor }}
                                     >
                                         {index + 1}
                                     </div>
-                                    <div className="flex size-4 items-center justify-center sm:size-5">
+                                    <div className="flex size-4 items-center justify-center transition-transform duration-500 group-hover/card:-translate-y-0.5 group-hover/card:rotate-12 group-hover/card:scale-125 sm:size-5">
                                         <Crown stroke={card.primaryColor} />
                                     </div>
                                     <h2
-                                        className="whitespace-nowrap font-inter text-[10px] font-semibold tracking-[1.5px] sm:text-[11px]"
+                                        className="whitespace-nowrap font-inter text-[10px] font-semibold tracking-[1.5px] transition-all duration-500 group-hover/card:tracking-[2.5px] sm:text-[11px]"
                                         style={{ color: card.primaryColor }}
                                     >
                                         {card.header.toUpperCase()}
                                     </h2>
                                 </div>
 
-                                {/* ================= MOBILE ONLY (hidden from sm and up) ================= */}
+                                {/* ================= MOBILE ONLY ================= */}
                                 <div className="sm:hidden">
-                                    {/* Player: avatar left, name + button right */}
                                     <div className="flex flex-row items-center gap-3 px-3 py-3">
                                         <div
-                                            className="size-12 shrink-0 overflow-hidden rounded-full border"
+                                            className="size-12 shrink-0 overflow-hidden rounded-full border transition-all duration-500 group-hover/card:scale-110 group-hover/card:shadow-[0_0_12px_var(--c)]"
                                             style={{ borderColor: card.primaryColor }}
                                         >
                                             <Image
@@ -404,7 +425,7 @@ export default function Home() {
                                                 alt={card.name}
                                                 width={100}
                                                 height={100}
-                                                className="size-full object-cover"
+                                                className="size-full object-cover transition-transform duration-700 group-hover/card:scale-110"
                                             />
                                         </div>
 
@@ -427,7 +448,6 @@ export default function Home() {
                                         </div>
                                     </div>
 
-                                    {/* Win % and Streak right under the player on mobile */}
                                     <div className="grid grid-cols-2 border-t border-inactive py-2.5">
                                         <div className="flex flex-col items-center justify-center">
                                             <span className="flex items-center justify-center gap-1 whitespace-nowrap font-inter text-[10px] text-inactive">
@@ -449,10 +469,10 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                {/* ================= TABLET / DESKTOP ONLY (hidden on mobile) ================= */}
+                                {/* ================= TABLET / DESKTOP ONLY ================= */}
                                 <div className="hidden flex-col items-center justify-center gap-3 p-4 sm:flex md:gap-4">
                                     <div
-                                        className="size-16 overflow-hidden rounded-full border md:size-20"
+                                        className="size-16 overflow-hidden rounded-full border transition-all duration-500 group-hover/card:scale-110 group-hover/card:shadow-[0_0_16px_var(--c)] md:size-20"
                                         style={{ borderColor: card.primaryColor }}
                                     >
                                         <Image
@@ -460,17 +480,17 @@ export default function Home() {
                                             alt={card.name}
                                             width={100}
                                             height={100}
-                                            className="size-full object-cover"
+                                            className="size-full object-cover transition-transform duration-700 group-hover/card:scale-110"
                                         />
                                     </div>
 
-                                    <h4 className="font-inter text-lg font-bold text-active md:text-xl">
+                                    <h4 className="font-inter text-lg font-bold text-active transition-colors duration-300 md:text-xl group-hover/card:text-white">
                                         {card.name}
                                     </h4>
 
                                     <button
                                         type="button"
-                                        className="flex w-fit items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm"
+                                        className="flex w-fit items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm transition-transform duration-300 group-hover/card:scale-105"
                                         style={{
                                             backgroundColor: card.buttonBg,
                                             borderColor: card.primaryColor,
@@ -481,13 +501,13 @@ export default function Home() {
                                     </button>
                                 </div>
 
-                                {/* Stats row 1 (shared by mobile and desktop) */}
+                                {/* Stats row 1 */}
                                 <div className="grid grid-cols-3 border-t border-inactive py-2.5 sm:py-4">
                                     <div className="flex flex-col items-center justify-center">
                                         <span className="flex items-center justify-center gap-1 whitespace-nowrap font-inter text-[10px] text-inactive sm:gap-1.5 sm:text-[11px]">
                                             <Person /> Clubs played
                                         </span>
-                                        <p className="font-barlow text-lg font-bold leading-tight text-active sm:text-2xl">
+                                        <p className="font-barlow text-lg font-bold leading-tight text-active transition-transform duration-500 group-hover/card:scale-110 sm:text-2xl">
                                             {card.stats.clubs}
                                         </p>
                                     </div>
@@ -496,7 +516,7 @@ export default function Home() {
                                         <span className="flex items-center justify-center gap-1 whitespace-nowrap font-inter text-[10px] text-inactive sm:gap-1.5 sm:text-[11px]">
                                             <Trophy /> Tournaments
                                         </span>
-                                        <p className="font-barlow text-lg font-bold leading-tight text-active sm:text-2xl">
+                                        <p className="font-barlow text-lg font-bold leading-tight text-active transition-transform duration-500 delay-75 group-hover/card:scale-110 sm:text-2xl">
                                             {card.stats.tournaments}
                                         </p>
                                     </div>
@@ -505,19 +525,19 @@ export default function Home() {
                                         <span className="flex items-center justify-center gap-1 whitespace-nowrap font-inter text-[10px] text-inactive sm:gap-1.5 sm:text-[11px]">
                                             <Target /> Targets
                                         </span>
-                                        <p className="font-barlow text-lg font-bold leading-tight text-active sm:text-2xl">
+                                        <p className="font-barlow text-lg font-bold leading-tight text-active transition-transform duration-500 delay-150 group-hover/card:scale-110 sm:text-2xl">
                                             {card.stats.targets}
                                         </p>
                                     </div>
                                 </div>
 
-                                {/* Stats row 2: DESKTOP ONLY (on mobile this is already shown under the player) */}
+                                {/* Stats row 2: DESKTOP ONLY */}
                                 <div className="hidden grid-cols-2 border-t border-inactive py-4 sm:grid">
                                     <div className="flex flex-col items-center justify-center">
                                         <span className="flex items-center justify-center gap-1.5 whitespace-nowrap font-inter text-[11px] text-inactive">
                                             <Win /> Win %
                                         </span>
-                                        <p className="font-barlow text-2xl font-bold leading-tight text-[#4ADE80]">
+                                        <p className="font-barlow text-2xl font-bold leading-tight text-[#4ADE80] transition-transform duration-500 group-hover/card:scale-110">
                                             {card.stats.winRate}
                                         </p>
                                     </div>
@@ -526,7 +546,7 @@ export default function Home() {
                                         <span className="flex items-center justify-center gap-1.5 whitespace-nowrap font-inter text-[11px] text-inactive">
                                             <Streak /> Win Streak
                                         </span>
-                                        <p className="font-barlow text-2xl font-bold leading-tight text-[#F97316]">
+                                        <p className="font-barlow text-2xl font-bold leading-tight text-[#F97316] transition-transform duration-500 delay-75 group-hover/card:scale-110">
                                             {card.stats.streak}
                                         </p>
                                     </div>
@@ -543,7 +563,7 @@ export default function Home() {
                             <div className="grid h-full w-fit place-items-center p-1">
                                 <Crown />
                             </div>
-                            <h5 className="whitespace-nowrap font-inter text-[11px] font-medium tracking-[3px] text-inactive">
+                            <h5 className="whitespace-nowrap font-inter text-[11px] md:text-base font-medium tracking-[3px] text-inactive">
                                 Great Players. Bigger Dreams.
                             </h5>
                             <div className="grid h-full w-8 place-items-center p-2 sm:w-fit">
@@ -622,7 +642,7 @@ export default function Home() {
                                             {t.lastEntry}
                                         </span>
                                     </div>
-                                    <Button text="Join Now" bg="bg-buttons" border="border border-[#55E489]" />
+                                    <Button text="Join Now" bg="bg-buttons" border="border border-[#55E489] px-10 h-auto max-h-[45px]" />
                                 </div>
                             </div>
                         </div>
@@ -661,20 +681,27 @@ export default function Home() {
                     {[0, 1, 2].map((item) => (
                         <div
                             key={item}
-                            className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#31443A]"
+                            className="group/card relative flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#31443A] bg-[#0B1410]/40
+        transition-all duration-500 ease-[cubic-bezier(0.33,1,0.68,1)]
+        hover:-translate-y-2 hover:border-[#4ADE80]/60
+        hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.8),0_0_30px_rgba(74,222,128,0.15)]"
                         >
                             {/* Image */}
-                            <Image
-                                src={ClubImage}
-                                alt="Club image"
-                                className="h-40 w-full object-cover sm:h-48"
-                            />
+                            <div className="relative overflow-hidden">
+                                <Image
+                                    src={ClubImage}
+                                    alt="Club image"
+                                    className="h-40 w-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-110 sm:h-48"
+                                />
+                                {/* Neeche se dark gradient, hover par aata hai */}
+                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" />
+                            </div>
 
                             <div className="flex flex-col gap-2 p-4 sm:gap-5 sm:p-5">
                                 {/* Heading with logo */}
-                                <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4 sm:pb-5">
+                                <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4 transition-colors duration-500 group-hover/card:border-[#4ADE80]/30 sm:pb-5">
                                     <div className="flex min-w-0 items-center gap-3">
-                                        <div className="size-10 shrink-0 overflow-hidden rounded-full">
+                                        <div className="size-10 shrink-0 overflow-hidden rounded-full ring-2 ring-transparent transition-all duration-500 group-hover/card:ring-[#4ADE80]/60">
                                             <Image
                                                 src={Logo}
                                                 alt="Club logo"
@@ -682,7 +709,7 @@ export default function Home() {
                                             />
                                         </div>
                                         <div className="flex min-w-0 flex-col">
-                                            <h2 className="truncate font-inter text-lg font-bold text-white sm:text-xl">
+                                            <h2 className="truncate font-inter text-lg font-bold text-white transition-colors duration-300 group-hover/card:text-[#4ADE80] sm:text-xl">
                                                 The Cue Longue
                                             </h2>
                                             <p className="truncate font-inter text-sm text-inactive">
@@ -690,7 +717,7 @@ export default function Home() {
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="grid shrink-0 place-items-center rounded-sm bg-gold px-[7px] py-[6px] font-inter text-xs font-semibold text-black">
+                                    <div className="grid shrink-0 place-items-center rounded-sm bg-gold px-[7px] py-[6px] font-inter text-xs font-semibold text-black transition-transform duration-300 group-hover/card:scale-110">
                                         4.9/5
                                     </div>
                                 </div>
@@ -722,6 +749,20 @@ export default function Home() {
                                     border="border border-[#55E489]"
                                 />
                             </div>
+
+                            {/* Neeche ki green line: left se right slide hoti hai */}
+                            <span
+                                aria-hidden
+                                className="h-[3px] absolute inset-x-0 bottom-0 right-0 origin-left pointer-events-none bg-gradient-to-r from-[#55E489] to-[#00A03B] scale-x-0 
+                                group-hover/card:scale-x-100 transition-transform duration-700 ease-out"
+                            />
+
+
+                            {/* Upar ki soft shine */}
+                            <span
+                                aria-hidden
+                                className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[#4ADE80]/20 opacity-0 blur-3xl transition-opacity duration-700 group-hover/card:opacity-100"
+                            />
                         </div>
                     ))}
                 </div>
@@ -733,7 +774,7 @@ export default function Home() {
                         textStyle="font-inter font-medium text-md text-white"
                         bg="bg-white/5"
                         border="border-none"
-                        padding="px-10 py-3.5"
+                        padding="px-10 py-2 sm:py-3.5 h-auto max-h-[30px] sm:max-h-[45px]"
                     />
                 </div>
             </Container>
@@ -821,13 +862,27 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
+                            <div className="w-full h-auto flex items-center justify-end bg-white/5  p-2 sm:p-5">
+                                <div className="relative h-fit w-fit group/link">
+                                    {/* Glow */}
+                                    <div
+                                        aria-hidden
+                                        className="pointer-events-none absolute -inset-x-3 -inset-y-1 rounded-full bg-gradient-to-r from-[#55E489]/20 to-[#00A03B]/30 opacity-0 blur-md transition-opacity duration-500 group-hover/link:opacity-40"
+                                    />
+                                    <a
+                                        href="#"
+                                        className=" w-fit  font-inter text-sm sm:text-base font-bold bg-gradient-to-r from-[#55E489] to-[#00A03B] bg-clip-text text-transparent "
+                                    >
+                                        View Results
+                                    </a>
+                                    {/* Underline */}
+                                    <div className="w-full h-[2px] bg-gradient-to-r from-[#55E489] to-[#00A03B] absolute left-0 bottom-0 origin-left scale-x-0  transition-transform duration-700 ease-out group-hover/link:scale-x-100">
 
-                            <a
-                                href="#"
-                                className="flex items-center justify-end bg-white/5 p-2 font-inter text-sm sm:text-base font-bold text-green sm:p-5"
-                            >
-                                View Results
-                            </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                     ))}
                 </div>
@@ -851,7 +906,7 @@ export default function Home() {
                     {podium.map((p, index) => (
                         <div
                             key={index}
-                            className={`relative flex w-full flex-col items-start rounded-2xl border ${p.card}`}
+                            className={`group/card relative flex w-full flex-col items-start rounded-2xl border ${p.card}`}
                         >
                             {/* Rank badge on the top border */}
                             <div
@@ -880,10 +935,11 @@ export default function Home() {
                                         The cue club Jaipur
                                     </p>
                                     <div className="flex flex-wrap items-center gap-1.5">
-                                        {balls.map((b) => (
+                                        {balls.map((b, i) => (
                                             <div
                                                 key={b.colors}
-                                                className={`flex size-6 items-center justify-center rounded-full font-barlow text-xs font-semibold tracking-wide text-active sm:size-7.5 sm:text-base sm:tracking-[2px] ${b.colors}`}
+                                                style={{ animationDelay: `${i * 120}ms` }}
+                                                className={`flex size-6 items-center justify-center rounded-full font-barlow text-xs font-semibold tracking-wide text-active sm:size-7.5 sm:text-base sm:tracking-[2px] group-hover/card:animate-ball-bounce motion-reduce:animate-none ${b.colors}`}
                                             >
                                                 {b.scores}
                                             </div>

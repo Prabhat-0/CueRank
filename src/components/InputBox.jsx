@@ -15,7 +15,7 @@ const InputBox = ({
   const inputId = id || name
 
   return (
-    <div className="flex w-full flex-col gap-3.5">
+    <div className="flex w-full flex-col gap-2 sm:gap-3.5">
       {label && (
         <label htmlFor={inputId} className="text-sm font-medium font-inter text-white/80">
           {label}
@@ -32,13 +32,13 @@ const InputBox = ({
         onChange={onChange}
         aria-invalid={!!error}
         aria-describedby={error ? `${inputId}-error` : undefined}
-        className={`h-[50px] rounded-[10px] border bg-white/5 px-3.5 text-active outline-none placeholder:font-inter placeholder:text-sm placeholder:font-medium placeholder:text-inactive ${
+        className={`h-[40px] sm:h-[50px] rounded-[10px] border bg-white/5 px-3.5 text-active outline-none placeholder:font-inter placeholder:text-sm placeholder:font-medium placeholder:text-inactive ${
           error ? 'border-red-500' : 'border-transparent focus:border-green'
         } ${className}`}
       />
 
       {error && (
-        <p id={`${inputId}-error`} className="-mt-2 text-xs font-medium text-red-400">
+        <p id={`${inputId}-error`} className="-mt-2 text-[10px] sm:text-xs font-medium text-red-400">
           {error}
         </p>
       )}

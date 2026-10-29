@@ -112,7 +112,7 @@ const Footer = () => {
         {/* CTAs */}
         <div className="col-span-2 flex whitespace-nowrap flex-row gap-2 sm:gap-5 sm:flex-row lg:col-span-1 lg:flex-col">
           <Button
-            href="/clubRegister"
+            href="/clubregister"
             text="Club Registration"
              padding="py-2 sm:py-3 px-7.5 md:py-3.5 h-auto max-h-[48px]"
             textStyle="font-inter font-semibold text-sm md:text-lg text-black"
